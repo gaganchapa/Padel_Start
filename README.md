@@ -1,5 +1,6 @@
 Synthetic Image Generation, Preprocessing, and Flux Model Forward Pass
-![Alt text]([relative%20path/to/img.jpg?raw=true "Title"](https://github.com/gaganchapa/Padel_Start/blob/main/diagram-export-07-03-2025-23_07_34.png))
+![Alt text](https://github.com/gaganchapa/Padel_Start/blob/main/diagram-export-07-03-2025-23_07_34.png)
+
 
 Overview
 
