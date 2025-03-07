@@ -50,13 +50,8 @@ model = Chain(
 ### 1. Install Required Packages
 Ensure you have all necessary Julia packages installed by running:
 ```julia
-import Pkg
-Pkg.instantiate()
-```
-
-Or install required dependencies manually:
-```julia
-Pkg.add(["Flux", "Images", "FileIO", "Plots", "CUDA"])
+# Install dependencies for Julia
+julia req.jl
 ```
 
 ### 2. Run the Code
@@ -64,9 +59,6 @@ Execute the scripts in order:
 ```sh
 # Generate synthetic images using diffusion model
 jupyter notebook diffusion.ipynb
-
-# Install dependencies for Julia
-julia req.jl
 
 # Run the main script for processing and feature extraction
 julia code.jl
@@ -76,7 +68,7 @@ julia code.jl
 - **Preprocessed Image:** Saved as `loaded_image_verification.png`
 - **Feature Maps:** Extracted and saved as `conv_layer_X_feature_maps.png`
 - **Model Architecture:** Saved as `model_architecture.txt`
-- **Additional Visualizations:** Contour and surface plots saved in `input_image_visualizations.png`
+- **Additional Visualizations:** Contour and surface plots saved in `input_image_visualizations.png`,`input_image_visualizations/png`
 
 This workflow allows easy experimentation with CNNs in Julia using Flux while ensuring proper visualization and debugging through feature maps.
 
