@@ -92,5 +92,4 @@ julia code.jl
 - If GPU is available, the model will utilize CUDA for faster computation.  
 - Outputs are saved automatically in the working directory.  
 
-### **End of README**  
 
