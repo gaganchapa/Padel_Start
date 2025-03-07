@@ -1,74 +1,123 @@
-# Synthetic Image Generation, Preprocessing, and Flux Model Forward Pass
+Synthetic Image Generation, Preprocessing, and Flux Model Forward Pass
+![Alt text]([relative%20path/to/img.jpg?raw=true "Title"](https://github.com/gaganchapa/Padel_Start/blob/main/diagram-export-07-03-2025-23_07_34.png))
 
+Overview
 
-## Overview
-This project involves processing images, defining a Convolutional Neural Network (CNN) using the Flux.jl library, and visualizing feature maps. The workflow consists of:
+This project involves generating synthetic images using a diffusion model, preprocessing images, defining a Convolutional Neural Network (CNN) using Flux.jl, and extracting feature maps to visualize model activations.
 
-1. **Image Preprocessing** - Loading, resizing, and converting images to a tensor format suitable for deep learning.
-2. **CNN Model Definition** - A simple CNN is implemented using Flux.jl to perform a forward pass.
-3. **Feature Map Extraction & Visualization** - Extracting intermediate feature maps from convolutional layers and saving visualizations.
+Workflow Breakdown
 
-## Workflow
-### 1. Image Preprocessing
-- The script loads an input image and checks for its existence.
-- The image is resized to **224×224 pixels** and converted to grayscale if necessary.
-- The preprocessed image is transformed into a **Float32 tensor** and reshaped for CNN input.
-- If the image processing fails, a test pattern is generated instead.
-- The processed image is saved as a heatmap for verification.
+Synthetic Image Generation - Generate images using a text-to-image diffusion model.
 
-### 2. CNN Model Definition
-A simple CNN model is created using Flux.jl. It consists of:
+Image Preprocessing & Model Processing - Prepare images for deep learning and perform a forward pass through a CNN.
 
-- **Three convolutional layers** with ReLU activation.
-- **Max-pooling layers** to reduce spatial dimensions.
-- A **fully connected layer** followed by a **softmax activation** for classification.
+Feature Extraction & Visualization - Extract and visualize intermediate feature maps from the model.
 
-#### Model Architecture in Flux
-```julia
-using Flux
+1. Synthetic Image Generation (diffusion.ipynb)
 
-model = Chain(
-    Conv((3, 3), 1 => 16, relu),
-    MaxPool((2,2)),
-    Conv((3, 3), 16 => 32, relu),
-    MaxPool((2,2)),
-    Conv((3, 3), 32 => 64, relu),
-    MaxPool((2,2)),
-    x -> reshape(x, :, size(x, 4)),
-    Dense(43264, 128, relu),
-    Dense(128, 10),
-    softmax
-)
-```
+Uses a Stable Diffusion model to generate images from a text prompt (e.g., "a serene sunset over a futuristic city").
 
-### 3. Feature Map Extraction & Visualization
-- The forward pass is performed using the preprocessed image.
-- Intermediate feature maps are extracted from convolutional layers.
-- These feature maps are normalized and plotted as heatmaps.
-- The feature maps are saved as images for interpretation.
+Generates at least three images based on the prompt.
 
-## Running the Project
-### 1. Install Required Packages
-Ensure you have all necessary Julia packages installed by running:
-```julia
-# Install dependencies for Julia
-julia req.jl
-```
+Saves the images to disk with appropriate filenames.
 
-### 2. Run the Code
-Execute the scripts in order:
-```sh
-# Generate synthetic images using diffusion model
-jupyter notebook diffusion.ipynb
+If local generation is not feasible due to hardware constraints, pre-generated images are used.
 
-# Run the main script for processing and feature extraction
-julia code.jl
-```
+Running Synthetic Image Generation
 
-## Outputs
-- **Preprocessed Image:** Saved as `loaded_image_verification.png`
-- **Feature Maps:** Extracted and saved as `conv_layer_X_feature_maps.png`
-- **Model Architecture:** Saved as `model_architecture.txt`
-- **Additional Visualizations:** Contour and surface plots saved in `input_image_visualizations.png`,`input_image_visualizations/png`
+jupyter notebook diffusion.ipynb  
 
+2. Image Preprocessing & Model Processing (code.jl)
 
+This step processes the generated images and runs them through a CNN in Flux.jl.
+
+Steps Involved:
+
+Image Preprocessing
+
+Loads the generated images and verifies their existence.
+
+Resizes images to 224×224 pixels.
+
+Converts images to grayscale if necessary.
+
+Transforms images into Float32 tensors for model input.
+
+If image processing fails, generates a fallback test pattern.
+
+Saves the preprocessed image as loaded_image_verification.png.
+
+CNN Model Definition
+
+Implements a simple CNN with three convolutional layers.
+
+Uses ReLU activation and Max-pooling for feature extraction.
+
+Includes two dense layers and a final softmax activation for classification.
+
+Model Architecture in Flux
+
+using Flux  
+
+model = Chain(  
+    Conv((3, 3), 1 => 16, relu),  
+    MaxPool((2,2)),  
+    Conv((3, 3), 16 => 32, relu),  
+    MaxPool((2,2)),  
+    Conv((3, 3), 32 => 64, relu),  
+    MaxPool((2,2)),  
+    x -> reshape(x, :, size(x, 4)),  
+    Dense(43264, 128, relu),  
+    Dense(128, 10),  
+    softmax  
+)  
+
+Running Image Preprocessing & Model Processing
+
+# Install dependencies for Julia  
+julia req.jl  
+
+# Run the main script for processing and feature extraction  
+julia code.jl  
+
+3. Feature Extraction & Visualization
+
+Performs a forward pass using the preprocessed image.
+
+Extracts intermediate feature maps from CNN layers.
+
+Normalizes and saves feature maps as heatmaps.
+
+Generates additional visualizations such as contour and surface plots.
+
+Saves outputs to disk for interpretation.
+
+Output Files
+
+File
+
+Description
+
+loaded_image_verification.png
+
+Preprocessed image for verification
+
+conv_layer_X_feature_maps.png
+
+Extracted feature maps from convolutional layers
+
+model_architecture.txt
+
+Saved model structure
+
+input_image_visualizations.png
+
+Contour and surface plots of input image
+
+Final Notes
+
+Ensure that all dependencies are installed before running scripts.
+
+If GPU is available, the model will utilize CUDA for faster computation.
+
+Outputs are saved automatically in the working directory.
