@@ -1,5 +1,5 @@
 # **Synthetic Image Generation, Preprocessing, and Flux Model Forward Pass**  
-![Alt text](https://github.com/gaganchapa/Padel_Start/blob/main/diagram-export-07-03-2025-23_07_34.png)
+![Alt text](https://github.com/gaganchapa/Padel_Start/blob/main/diagram-export-07-03-2025-23_07_34.png](https://github.com/gaganchapa/Padel_Start/blob/main/diagram-export-07-03-2025-23_14_31.png)
 
 ## **Overview**  
 This project involves generating synthetic images using a diffusion model, preprocessing images, defining a Convolutional Neural Network (CNN) using Flux.jl, and extracting feature maps to visualize model activations.  
