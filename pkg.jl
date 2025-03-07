@@ -1,0 +1,1 @@
+using Pkg; Pkg.add(["Flux", "Images", "FileIO", "Plots","GraphPlot","LightGraphs","Colors","Zygote"])
