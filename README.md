@@ -1,4 +1,5 @@
-# Flux CNN Image Processing & Feature Map Extraction
+# Synthetic Image Generation, Preprocessing, and Flux Model Forward Pass
+
 
 ## Overview
 This project involves processing images, defining a Convolutional Neural Network (CNN) using the Flux.jl library, and visualizing feature maps. The workflow consists of:
