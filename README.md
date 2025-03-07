@@ -70,5 +70,4 @@ julia code.jl
 - **Model Architecture:** Saved as `model_architecture.txt`
 - **Additional Visualizations:** Contour and surface plots saved in `input_image_visualizations.png`,`input_image_visualizations/png`
 
-This workflow allows easy experimentation with CNNs in Julia using Flux while ensuring proper visualization and debugging through feature maps.
 
