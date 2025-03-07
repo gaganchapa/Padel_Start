@@ -87,9 +87,6 @@ julia code.jl
 
 ---  
 
-## **Final Notes**  
-- Ensure that all dependencies are installed before running scripts.  
-- If GPU is available, the model will utilize CUDA for faster computation.  
-- Outputs are saved automatically in the working directory.  
+#### Code : https://github.com/gaganchapa/Padel_Start/tree/main
 
 
